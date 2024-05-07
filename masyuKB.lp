@@ -1,3 +1,5 @@
+%Autor: Simon Noya Dominguez
+
 % Reglas del rompecabezas Masyu
 % Tamaño del rompecabezas
 size(n).
