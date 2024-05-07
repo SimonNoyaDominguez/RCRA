@@ -32,7 +32,7 @@ Para escribir en un archivo .txt las soluciones se usaron los comandos:
 
 Si se quiere comprobar que den una sola solución se debe ir al código de masyuKB.lp y arriba del todo se tiene que poner como comentario la linea size(n) y luego descomentar una de las linea de abajo, las cuales tienen los datos de cada puzzle. Estas linea están en orden, es decir la primera linea corresponde a masyu01.lp, la segunda a masyu02.lp y de ahi hasta el último puzzle. Una vez realizado este proceso se debe usar el comando:
 
--> clingo 0  masyuKB1.lp
+-> clingo 0  masyuKB.lp
 
 
 
