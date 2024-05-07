@@ -1,5 +1,7 @@
 # RCRA
 
+Autor:Simón Noya Dominguez
+
 Para poder ver las soluciones por pantalla de los puzzle usar estos comando (Yo no tengo python3 asi que lo hice con python):
 
 -> python decode.py masyuKB.lp masyu01.lp
