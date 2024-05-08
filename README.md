@@ -16,6 +16,10 @@ Para poder ver las soluciones por pantalla de los puzzle usar estos comando (Yo 
 
 -> python decode.py masyuKB.lp masyu06.lp
 
+-> python decode.py masyuKB.lp masyu07.lp
+
+-> python decode.py masyuKB.lp masyu08.lp
+
 Para escribir en un archivo .txt las soluciones se usaron los comandos:
 
 -> python decode.py masyuKB.lp masyu01.lp >solution01.txt
@@ -29,6 +33,10 @@ Para escribir en un archivo .txt las soluciones se usaron los comandos:
 -> python decode.py masyuKB.lp masyu05.lp >solution05.txt
 
 -> python decode.py masyuKB.lp masyu06.lp >solution06.txt
+
+-> python decode.py masyuKB.lp masyu07.lp >solution07.txt
+
+-> python decode.py masyuKB.lp masyu08.lp >solution08.txt
 
 Si se quiere comprobar que den una sola solución se debe ir al código de masyuKB.lp y arriba del todo se tiene que poner como comentario la linea size(n) y luego descomentar una de las linea de abajo, las cuales tienen los datos de cada puzzle. Estas linea están en orden, es decir la primera linea corresponde a masyu01.lp, la segunda a masyu02.lp y de ahi hasta el último puzzle. Una vez realizado este proceso se debe usar el comando:
 
