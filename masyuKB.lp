@@ -12,7 +12,6 @@ size(n).
 %#const n=20. black(3;17;36;49;52;65;94;102;104;106;131;142;154;173;175;188;207;209;240;251;260;268;274;286;287;295;301;334;383). white(10;21;29;31;42;47;58;59;73;81;88;91;92;98;101;109;117;118;120;123;137;143;146;148;149;165;177;181;182;183;190;204;206;215;217;218;224;226;233;236;237;243;252;253;259;264;270;278;290;292;307;310;312;317;324;325;328;330;337;341;345;352;358;360;365;369;376;389;392;396;398).
 %#const n=25. black(2;7;14;56;70;73;76;83;88;111;112;117;124;129;148;162;178;220;226;232;240;249;269;272;280;289;310;327;353;354;356;364;386;388;395;398;421;422;450;468;486;496;502;505;509;512;516;518;521;526;544;552;598;612;614). white(4;34;36;41;44;46;58;79;96;105;108;118;125;127;131;146;158;160;164;167;170;181;185;187;190;191;194;195;198;200;208;209;211;213;217;230;233;237;242;244;245;256;259;283;287;290;294;306;319;326;331;333;337;341;349;359;368;376;383;391;394;396;402;415;429;431;433;434;437;438;458;461;464;466;473;478;483;484;489;503;536;549;554;557;564;568;575;579;580;583;584;591;611;617).
 
-
 % Definimos todos los puntos
 punto(0..n*n-1).
 
@@ -20,8 +19,8 @@ punto(0..n*n-1).
 row(0..n-1).
 col(0..n-1).
 
+
 %Definimos los valores de una cordenada.
-%Definimos que coordenadas son blam¡ncas y cuales negras, blanco=0, negro=1, resto<0.
 coordenate((X,Y),P):- punto(P), row(X), col(Y), X=P/n, Y=P\n,  P=P.
 
 %Reglas de adjacencia
@@ -40,23 +39,24 @@ adjacencia_coor((X,Y), (X+1,Y)):-row(X), row(X+1), col(Y).
 
 
 %Definimos un punto minimo desde el cual comprobar que todos lo segmentos estan conectados
-minpoint_white(P):-#min{Q:white(Q)}=P.
-minpoint_black(P):-#min{Q:black(Q)}=P.
+punto_minimo_white(P):-#min{Q:white(Q)}=P.
+punto_minimo_black(P):-#min{Q:black(Q)}=P.
 
-minpoint(W):-minpoint_white(W), minpoint_black(B), W<B.
-minpoint(B):-minpoint_white(W), minpoint_black(B), W>B .
+punto_minimo(W):-punto_minimo_white(W), punto_minimo_black(B), W<B.
+punto_minimo(B):-punto_minimo_white(W), punto_minimo_black(B), W>B.
 
-connected(P):-minpoint(P).
+reach(P):-punto_minimo(P).
 
-connected(P'):- minpoint(P), seg(P,P').
-connected(P'):- minpoint(P), seg(P',P).
+reach(P'):- punto_minimo(P), seg(P,P').
+reach(P'):- punto_minimo(P), seg(P',P).
 
-connected(P''):- connected(P'), seg(P'',P').
-connected(P''):- connected(P'), seg(P',P'').
+reach(P''):- reach(P'), seg(P'',P').
+reach(P''):- reach(P'), seg(P',P'').
 
 %Debe haber un único ciclo.
-:- white(W), not connected(W).
-:- black(B), not connected(B).
+:- white(W), not reach(W).
+:- black(B), not reach(B).
+
 
 %Definimos que es una curva en el punto p.
 curva_en_p(F,P,S) :-  seg(F,P), seg(P,S), coordenate((X,Y),P), coordenate((X1,Y1),F), coordenate((X2,Y2),S), X1=X2. 
